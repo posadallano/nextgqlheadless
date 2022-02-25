@@ -1,5 +1,12 @@
 export default function Post(data) {
     
+    console.log({data})
+    
+    return (
+        <div>
+            <h1>Hi there!</h1>
+        </div>
+    )
 }
 
 export async function getStaticProps(context) {
@@ -35,4 +42,39 @@ export async function getStaticProps(context) {
             post: json.data.post,
         },
     }       
+}
+
+export async function getStaticPaths() {
+
+    const res = await fetch('http://localhost/wpnextgql/graphql', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            query: `
+            query AllPostsQuery {
+                posts {
+                    nodes {
+                        slug
+                        content
+                        title
+                        featuredImage {
+                            node {
+                                sourceUrl
+                            }
+                        }
+                    }
+                }
+            }
+        `})
+    })
+
+    const json = await res.json()
+    const posts = json.data.posts.nodes;
+
+    const paths = posts.map((post) => ({
+        params: { slug: post.slug },
+    }))
+
+    return { paths, fallback: false }
+
 }
