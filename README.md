@@ -1,6 +1,6 @@
-# Headless WordPress setup, fetching data using Next JS
+# Headless WordPress setup fetching data using NextJS and GraphQL
 
-## Getting Started
+### Getting Started
 
 First, run the development server:
 
