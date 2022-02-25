@@ -1,9 +1,18 @@
 export default function Home ( {posts} ){
 
-  console.log({posts});
-
   return (
+    <div>
       <h1>Hello from the Homepage</h1>
+      {
+        posts.nodes.map(post => {
+          return (
+            <ul key={post.slug}>
+              <li>{post.title}</li>
+            </ul>
+          )
+        })
+     }
+     </div>
   )
 }
 
