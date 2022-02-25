@@ -1,4 +1,4 @@
-Headless WordPress setup, fetching data using Next JS
+# Headless WordPress setup, fetching data using Next JS
 
 ## Getting Started
 
