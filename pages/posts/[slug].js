@@ -1,10 +1,14 @@
+import Image from 'next/image'
 export default function Post(data) {
     
-    console.log({data})
+    const post = data.post;
+    const src=post.featuredImage.node.sourceUrl;
     
     return (
         <div>
-            <h1>Hi there!</h1>
+            <h1>{post.title}</h1>
+            <Image width="640" height="400" alt="image" loader={() => src} src={src} />
+            <article dangerouslySetInnerHTML={{__html: post.content}}></article>
         </div>
     )
 }

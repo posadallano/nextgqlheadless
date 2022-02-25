@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export default function Home ( {posts} ){
 
   return (
@@ -7,7 +9,7 @@ export default function Home ( {posts} ){
         posts.nodes.map(post => {
           return (
             <ul key={post.slug}>
-              <li>{post.title}</li>
+              <Link href={`/posts/${post.slug}`}>{post.title}</Link>
             </ul>
           )
         })
